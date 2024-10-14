@@ -12,7 +12,14 @@ export const getAllProjects = async (req, res) => {
 
 export const addProject = async (req, res) => {
   try {
-    const { projectName, description, image, tech } = req.body;
+    const {
+      projectName,
+      description,
+      image,
+      tech,
+      deploymentLink,
+      githubLink,
+    } = req.body;
 
     let cloudinaryResponse = null;
     if (image) {
@@ -25,19 +32,19 @@ export const addProject = async (req, res) => {
     if (existingProject) {
       return res.status(400).json({ error: "Project name already exist" });
     }
-    const newProject = new Project({
+
+    const project = await Project.create({
       projectName,
       description,
       imageUrl: cloudinaryResponse?.secure_url
         ? cloudinaryResponse?.secure_url
         : "",
       tech,
+      deploymentLink,
+      githubLink,
     });
-    await newProject.save();
 
-    res
-      .status(201)
-      .json({ project: newProject, message: "Project added successfully" });
+    res.status(201).json({ project });
   } catch (error) {
     console.log("error in adding project:", error.message);
     res.status(500).json({ error: error.message });
@@ -46,8 +53,17 @@ export const addProject = async (req, res) => {
 
 export const deleteProject = async (req, res) => {
   try {
-    const { projectId } = req.body;
-    await Project.findByIdAndDelete({ _id: projectId });
+    const { id } = req.params;
+    const project = await Project.findById(id);
+    if (!project) {
+      return res.status(404).json({ message: "project not found" });
+    }
+    if (project.imageUrl) {
+      const publicId = project.imageUrl.split("/").pop().split(".")[0];
+      await cloudinary.uploader.destroy(`portfolio_projects/${publicId}`);
+    }
+    await Project.findByIdAndDelete(id);
+
     res.status(200).json({ message: "project deleted successfully" });
   } catch (error) {
     console.log("error deleting project", error.message);

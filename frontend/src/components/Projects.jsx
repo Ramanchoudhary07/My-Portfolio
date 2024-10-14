@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useProjectStore } from "../store/useProjectStore";
 import { motion } from "framer-motion";
+import { BiGlobe, BiLogoGithub } from "react-icons/bi";
 
 const ProjectCard = ({ project }) => {
   return (
@@ -8,7 +9,7 @@ const ProjectCard = ({ project }) => {
       <img
         src={project.imageUrl}
         alt="Project Image"
-        className="w-full rounded-2xl cursor-pointer transition-all duration-300 hover:scale-105 md:w-[300px]"
+        className="w-full rounded-2xl shadow-2xl shadow-[#6622ee] cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#62e] md:w-[400px]"
       />
 
       <div className="flex flex-col gap-5">
@@ -17,11 +18,22 @@ const ProjectCard = ({ project }) => {
           <p className="text-gray-400">{project.description}</p>
         </div>
         <div className="flex flex-wrap gap-5">
-          {project.tech.map((tech, index) => (
-            <span key={index} className="rounded-lg bg-black">
+          {project?.tech?.map((tech, index) => (
+            <span key={index} className="rounded-lg bg-black px-2">
               {tech}
             </span>
           ))}
+        </div>
+        <div className="flex gap-3">
+          <div className="flex items-center px-2 rounded-sm py-1 bg-[#6622eec0] cursor-pointer text-white/70 justify-center gap-2">
+            <BiGlobe />
+            <a href={project.deploymentLink}>Deployment Link</a>
+          </div>
+
+          <div className="flex items-center px-2 py-1 rounded-sm bg-[#6622eec0] cursor-pointer text-white/70 justify-center gap-2">
+            <BiLogoGithub />
+            <a href={project.githubLink}>Github Link</a>
+          </div>
         </div>
       </div>
     </div>
@@ -33,7 +45,11 @@ const Projects = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
-  const { projects } = useProjectStore();
+  const { projects, getAllProjects } = useProjectStore();
+
+  useEffect(() => {
+    getAllProjects();
+  }, [getAllProjects]);
 
   return (
     <div
@@ -53,7 +69,7 @@ const Projects = () => {
       {/* <h1 className="text-4xl font-light text-white md:text-6xl"></h1> */}
       <div className="flex flex-col gap-16 w-full max-w-[1000px] text-white">
         {projects.map((project) => (
-          <ProjectCard project={project} />
+          <ProjectCard key={project.projectName} project={project} />
         ))}
       </div>
     </div>

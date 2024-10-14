@@ -3,7 +3,7 @@ import { BiUser } from "react-icons/bi";
 import { motion } from "framer-motion";
 import AddProjectForm from "../components/AddProjectForm";
 import Messages from "../components/Messages";
-import ProjectSummary from "../components/projectSummary";
+import ProjectList from "../components/ProjectList";
 
 const tabs = [
   { id: "add", label: "Add Project", icon: BiUser },
@@ -40,7 +40,7 @@ const AdminPage = () => {
         ))}
       </div>
       {activeTab === "add" && <AddProjectForm />}
-      {activeTab === "projects" && <ProjectSummary />}
+      {activeTab === "projects" && <ProjectList />}
       {activeTab === "contacts" && <Messages />}
     </div>
   );

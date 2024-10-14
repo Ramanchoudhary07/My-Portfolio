@@ -1,13 +1,16 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useProjectStore } from "../store/useProjectStore";
+import { BiLoader } from "react-icons/bi";
 const AddProjectForm = () => {
-  const { loadding, addProject } = useProjectStore();
+  const { loading, addProject } = useProjectStore();
   const [projectData, setProjectData] = useState({
     projectName: "",
     description: "",
     tech: [],
     image: "",
+    deploymentLink: "",
+    githubLink: "",
   });
 
   const [newTech, setNewTech] = useState("");
@@ -58,6 +61,8 @@ const AddProjectForm = () => {
         description: "",
         tech: [],
         image: "",
+        deploymentLink: "",
+        githubLink: "",
       });
       if (imageInputRef.current) {
         imageInputRef.current.value = "";
@@ -169,11 +174,57 @@ const AddProjectForm = () => {
               ))}
             </ul>
           </div>
+
+          <div className="flex flex-col gap-1">
+            <label htmlFor="deploymentLink">Deployment Link</label>
+            <div className="relative">
+              <input
+                id="deploymentLink"
+                type="text"
+                value={projectData.deploymentLink}
+                onChange={(e) =>
+                  setProjectData({
+                    ...projectData,
+                    deploymentLink: e.target.value,
+                  })
+                }
+                className="w-full block px-4 py-2 rounded-md
+            bg-gray-700 text-white/70 text-sm"
+                placeholder="Enter Project's deployment link here"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label htmlFor="githubLink">Github Link</label>
+            <div className="relative">
+              <input
+                id="githubLink"
+                type="text"
+                value={projectData.githubLink}
+                onChange={(e) =>
+                  setProjectData({
+                    ...projectData,
+                    githubLink: e.target.value,
+                  })
+                }
+                className="w-full block px-4 py-2 rounded-md
+            bg-gray-700 text-white/70 text-sm"
+                placeholder="Enter Project's github link here"
+              />
+            </div>
+          </div>
+
           <button
             type="submit"
+            disabled={loading}
             className="w-full rounded-md px-4 py-2 mt-2  bg-[#62e] font-medium text-center text-white/70"
           >
-            Submit
+            {loading ? (
+              <BiLoader className="animate-spin text-center mx-auto" />
+            ) : (
+              "Submit"
+            )}
           </button>
         </div>
       </form>

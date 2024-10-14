@@ -37,9 +37,9 @@ export const useProjectStore = create((set, get) => ({
   deleteProject: async (projectId) => {
     set({ loading: true });
     try {
-      const res = await axios.post(`/project/deleteProject`, projectId);
+      const res = await axios.delete(`/project/${projectId}`);
       set((prevState) => ({
-        projects: prevState.project.filter(
+        projects: prevState.projects.filter(
           (project) => project._id !== projectId
         ),
       }));
