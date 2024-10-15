@@ -36,11 +36,12 @@ const Hero = () => {
             Web Developer
           </h3>
           <p className="md:text-base text-pretty text-sm text-gray-400">
-            I am a web developer with a strong foundation in the MERN stack
-            (MongoDB, Express, React, Node.js) and experience in building
-            responsive and dynamic web applications. Along with web development,
-            I have a solid understanding of data structures and algorithms in
-            C++.
+            Welcome to my{" "}
+            <span className="bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent">
+              portfolio{" "}
+            </span>{" "}
+            🌟 Explore my projects, skills, and the journey so far. Feel free to
+            connect if you'd like to collaborate or learn more about my work. 🚀
           </p>
         </motion.div>
       </div>

@@ -27,34 +27,34 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 z-10 w-full flex items-center justify-between border-b border-b-gray-700 bg-black/70 px-16 py-6 text-white backdrop-blur-md md:justify-evenly">
-      <a
-        href="#"
+      <Link
+        to={`/`}
         className="bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent opacity-80 text-3xl font-semibold transition-all duration-300 hover:opacity-100"
       >
         Portfolio
-      </a>
+      </Link>
 
       <ul className="hidden md:flex gap-10">
-        <Link
-          to={`/`}
+        <a
+          href="#home"
           className="cursor-pointer opacity-70 transition-all duration-300 hover:opacity-100"
         >
           <li>Home</li>
-        </Link>
-        <a
-          href=""
-          className="cursor-pointer opacity-70 transition-all duration-300 hover:opacity-100"
-        >
-          <li>Skills</li>
         </a>
         <a
-          href=""
+          href="#About"
+          className="cursor-pointer opacity-70 transition-all duration-300 hover:opacity-100"
+        >
+          <li>About</li>
+        </a>
+        <a
+          href="#projects"
           className="cursor-pointer opacity-70 transition-all duration-300 hover:opacity-100"
         >
           <li>Projects</li>
         </a>
         <a
-          href=""
+          href="#contact"
           className="cursor-pointer opacity-70 transition-all duration-300 hover:opacity-100"
         >
           <li>Contact</li>
@@ -63,13 +63,31 @@ const Navbar = () => {
 
       <ul className="hidden md:flex gap-5">
         <li className="cursor-pointer text-xl opacity-70 transition-all duration-300 hover:opacity-100 hover:text-orange-500 ">
-          <FaLinkedin />
+          <a
+            href="https://linkedin.com/in/raman-choudhary-79b4b2316"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin />
+          </a>
         </li>
         <li className="cursor-pointer text-xl opacity-70 transition-all duration-300 hover:opacity-100 hover:text-white ">
-          <FaGithub />
+          <a
+            href="https://github.com/Ramanchoudhary07"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub />
+          </a>
         </li>
         <li className="cursor-pointer text-xl opacity-70 transition-all duration-300 hover:opacity-100 hover:text-green-500 ">
-          <FaInstagram />
+          <a
+            href="https://www.instagram.com/raman_choudhary01/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram />
+          </a>
         </li>
       </ul>
 
