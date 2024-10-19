@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import AddProjectForm from "../components/AddProjectForm";
 import Messages from "../components/Messages";
 import ProjectList from "../components/ProjectList";
+import ResumeLink from "../components/ResumeLink";
 
 const tabs = [
   { id: "add", label: "Add Project", icon: BiUser },
   { id: "projects", label: "Projects", icon: BiUser },
   { id: "contacts", label: "contacts", icon: BiUser },
+  { id: "resume", label: "Resume", icon: BiUser },
 ];
 const AdminPage = () => {
   const [activeTab, setActiveTab] = useState("add");
@@ -42,6 +44,7 @@ const AdminPage = () => {
       {activeTab === "add" && <AddProjectForm />}
       {activeTab === "projects" && <ProjectList />}
       {activeTab === "contacts" && <Messages />}
+      {activeTab === "resume" && <ResumeLink />}
     </div>
   );
 };

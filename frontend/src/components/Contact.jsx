@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { BiPhone } from "react-icons/bi";
+import { BiLoader, BiPhone } from "react-icons/bi";
 import { GoMail } from "react-icons/go";
+import { useContactStore } from "../store/useContactStore";
 
 const Contact = () => {
-  const loading = false;
+  const { loading, sendContact } = useContactStore();
   const varients = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
@@ -18,6 +19,7 @@ const Contact = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    sendContact(contactData);
     setContactData({
       name: "",
       email: "",

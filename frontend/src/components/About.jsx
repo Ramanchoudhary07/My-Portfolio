@@ -4,8 +4,10 @@ import Skills from "./Skills";
 import { FiFileText } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { BiLinkExternal } from "react-icons/bi";
+import { useAdminStore } from "../store/useAdminStore";
 
 const About = () => {
+  const { resumeLink } = useAdminStore();
   return (
     <div
       id="About"
@@ -67,8 +69,8 @@ const About = () => {
           </div>
           <div className="my-2">
             <a
-              href="https://drive.google.com/file/d/1r6zq2an31I1OU5YijObI3rjBNWsbg0DT/view?usp=sharing"
-              target="_blank"
+              href={resumeLink || "#"}
+              target={resumeLink != "#" ? "_blank" : "#"}
               rel="noopener noreferrer"
             >
               <button className="bg-[#62e] p-2 rounded-md flex items-center gap-1">

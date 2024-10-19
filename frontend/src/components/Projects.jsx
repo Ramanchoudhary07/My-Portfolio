@@ -32,12 +32,24 @@ const ProjectCard = ({ project }) => {
           <div className="flex gap-3">
             <div className="flex items-center px-2 rounded-sm py-1 bg-[#6622eec0] cursor-pointer text-white/70 justify-center gap-2">
               <BiGlobe />
-              <a href={project.deploymentLink}>Deployment Link</a>
+              <a
+                href={project.deploymentLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Deployment Link
+              </a>
             </div>
 
             <div className="flex items-center px-2 py-1 rounded-sm bg-[#6622eec0] cursor-pointer text-white/70 justify-center gap-2">
               <BiLogoGithub />
-              <a href={project.githubLink}>Github Link</a>
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Github Link
+              </a>
             </div>
           </div>
         </div>
