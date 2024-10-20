@@ -80,12 +80,11 @@ const Projects = () => {
         initial="hidden"
         whileInView="visible"
         transition={{ duration: 0.5 }}
-        className="text-4xl md:text-6xl font-normal  bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent"
+        className="text-4xl md:text-6xl font-normal pb-2  bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent"
       >
         Projects
       </motion.h1>
 
-      {/* <h1 className="text-4xl font-light text-white md:text-6xl"></h1> */}
       <div className="flex flex-col gap-16 w-full max-w-[1000px] text-white">
         {projects.map((project) => (
           <ProjectCard key={project.projectName} project={project} />
