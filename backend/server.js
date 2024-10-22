@@ -14,16 +14,16 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 const PORT = process.env.PORT || 5000;
 
-app.use(`/`, (req, res) => {
-  res.status(200).send({ message: "This is portfolio api" });
-});
-
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
     credentials: true,
   })
 );
+
+app.get(`/`, (req, res) => {
+  res.status(200).send({ message: "This is portfolio api" });
+});
 
 app.use(`/api/auth`, authRoutes);
 app.use(`/api/project`, projectRoutes);
