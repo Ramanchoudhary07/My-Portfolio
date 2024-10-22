@@ -6,6 +6,7 @@ import { connectDB } from "./lib/db.js";
 import authRoutes from "./routes/auth.routes.js";
 import projectRoutes from "./routes/project.routes.js";
 import contactRoutes from "./routes/contact.routes.js";
+import { message } from "statuses";
 
 dotenv.config();
 
@@ -14,13 +15,9 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 const PORT = process.env.PORT || 5000;
 
-// app.use(`/`, (req, res) => {
-//   if (process.env) {
-//     res.send({ ENV: process.env });
-//   } else {
-//     res.send("No .env file");
-//   }
-// });
+app.use(`/`, (req, res) => {
+  res.send({ message: "This is portfolio api" });
+});
 
 app.use(
   cors({
