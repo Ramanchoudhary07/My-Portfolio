@@ -58,12 +58,42 @@ const ProjectCard = ({ project }) => {
   );
 };
 
+const ProjectCardSkeleton = () => {
+  return (
+    <div className="animate-pulse">
+      <div className="flex flex-col gap-8 items-center md:flex-row md:gap-24">
+        <div className="w-full h-64 bg-gray-300/50 rounded-2xl shadow-md shadow-gray-400/20 md:w-[400px]"></div>
+
+        <div className="flex flex-col gap-5 w-full md:w-1/2">
+          <div className="flex flex-col gap-3">
+            <div className="h-6 bg-gray-300/50 rounded w-3/4"></div>
+            <div className="h-4 bg-gray-300/50 rounded w-full"></div>
+            <div className="h-4 bg-gray-300/50 rounded w-5/6"></div>
+          </div>
+          <div className="flex flex-wrap gap-5">
+            {[...Array(3)].map((_, index) => (
+              <div
+                key={index}
+                className="h-6 w-16 bg-gray-300/50 rounded-lg"
+              ></div>
+            ))}
+          </div>
+          <div className="flex gap-3">
+            <div className="h-8 w-32 bg-gray-300/50 rounded"></div>
+            <div className="h-8 w-32 bg-gray-300/50 rounded"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Projects = () => {
   const varients = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
-  const { projects, getAllProjects } = useProjectStore();
+  const { projects, getAllProjects, loading } = useProjectStore();
 
   useEffect(() => {
     getAllProjects();
@@ -86,9 +116,15 @@ const Projects = () => {
       </motion.h1>
 
       <div className="flex flex-col gap-16 w-full max-w-[1000px] text-white">
-        {projects?.map((project) => (
-          <ProjectCard key={project.projectName} project={project} />
-        ))}
+        {loading ? (
+          <ProjectCardSkeleton />
+        ) : (
+          <>
+            {projects?.map((project) => (
+              <ProjectCard key={project.projectName} project={project} />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
