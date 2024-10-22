@@ -86,7 +86,7 @@ const Projects = () => {
       </motion.h1>
 
       <div className="flex flex-col gap-16 w-full max-w-[1000px] text-white">
-        {projects.map((project) => (
+        {projects?.map((project) => (
           <ProjectCard key={project.projectName} project={project} />
         ))}
       </div>

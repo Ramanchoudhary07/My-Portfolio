@@ -12,6 +12,9 @@ import { useUserStore } from "./store/useUserStore";
 function App() {
   const { user } = useUserStore();
   const isAdmin = user?.role === "admin";
+
+  console.log("env file: ", import.meta.env);
+
   return (
     <>
       <div className="fixed -z-10 min-h-screen w-full [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]" />
