@@ -48,13 +48,11 @@ const About = () => {
           <div>
             <h3 className="text-xl font-semibold mb-2">Summary</h3>
             <p className="text-muted-foreground">
-              A dynamic Chemical Engineer in pre final year of under
-              graduation,with hands-on experience in web development,JavaScript,
-              and C++. Proficient in process engineering, problem-solving, and
-              project management, with a focus on delivering practical
-              solutions. Skilled in both technical development and engineering,
-              I’m eager to leverage my interdisciplinary background to drive
-              innovation and efficiency in industrial settings.
+              Aspiring web developer in pre-final year with hands-on experience
+              in full-stack development, JavaScript, and C++. Skilled in
+              problem-solving and building scalable web applications. Passionate
+              about leveraging technology to create efficient and innovative
+              solutions.
             </p>
           </div>
         </div>
